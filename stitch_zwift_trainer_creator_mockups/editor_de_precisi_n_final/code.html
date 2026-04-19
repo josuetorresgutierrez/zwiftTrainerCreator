@@ -1,0 +1,334 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="es"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>ZWIFT // TC - EDITOR DE PRECISIÓN</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700;900&amp;family=Inter:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "surface-container-low": "#131313",
+                        "tertiary-dim": "#e7a006",
+                        "surface-container-lowest": "#000000",
+                        "primary-dim": "#ff742d",
+                        "primary-container": "#ff7936",
+                        "tertiary-fixed-dim": "#e7a006",
+                        "on-surface": "#ffffff",
+                        "error-dim": "#d7383b",
+                        "secondary-dim": "#ec8230",
+                        "surface-container-highest": "#262626",
+                        "secondary-fixed-dim": "#ffb380",
+                        "on-secondary": "#4a2100",
+                        "on-tertiary-fixed-variant": "#5a3b00",
+                        "primary": "#ff915d",
+                        "tertiary": "#ffbe50",
+                        "error": "#ff716c",
+                        "outline": "#777575",
+                        "on-background": "#ffffff",
+                        "on-secondary-fixed": "#562700",
+                        "primary-fixed-dim": "#f96400",
+                        "background": "#0e0e0e",
+                        "tertiary-container": "#f7ad1e",
+                        "surface-bright": "#2c2c2c",
+                        "on-tertiary-container": "#4e3300",
+                        "on-tertiary-fixed": "#321f00",
+                        "on-secondary-fixed-variant": "#813e00",
+                        "on-primary-container": "#411400",
+                        "surface-tint": "#ff915d",
+                        "on-secondary-container": "#fff6f2",
+                        "secondary": "#fc8f3c",
+                        "secondary-container": "#964900",
+                        "surface-container": "#1a1919",
+                        "surface-dim": "#0e0e0e",
+                        "on-primary": "#541d00",
+                        "on-error": "#490006",
+                        "surface": "#0e0e0e",
+                        "error-container": "#9f0519",
+                        "primary-fixed": "#ff7936",
+                        "on-error-container": "#ffa8a3",
+                        "outline-variant": "#494847",
+                        "inverse-surface": "#fcf8f8",
+                        "inverse-primary": "#a43f00",
+                        "surface-container-high": "#201f1f",
+                        "on-primary-fixed-variant": "#511b00",
+                        "on-tertiary": "#5a3c00",
+                        "on-primary-fixed": "#000000",
+                        "tertiary-fixed": "#f7ad1e",
+                        "inverse-on-surface": "#565554",
+                        "secondary-fixed": "#ffc6a2",
+                        "on-surface-variant": "#adaaaa",
+                        "surface-variant": "#262626"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0px",
+                        "lg": "0px",
+                        "xl": "0px",
+                        "full": "9999px"
+                    },
+                    "fontFamily": {
+                        "headline": ["Space Grotesk"],
+                        "body": ["Inter"],
+                        "label": ["Inter"],
+                        "mono": ["ui-monospace", "SFMono-Regular", "Menlo", "Monaco", "Consolas", "Liberation Mono", "Courier New", "monospace"]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 48;
+        }
+        ::-webkit-scrollbar {
+            width: 4px;
+            height: 4px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #0e0e0e;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #262626;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #ff915d;
+        }
+        .syntax-keyword { color: #ff915d; font-weight: 700; }
+        .syntax-number { color: #f7ad1e; }
+        .syntax-comment { color: #494847; }
+    </style>
+</head>
+<body class="bg-background text-on-surface font-body overflow-hidden">
+<!-- TopAppBar -->
+<header class="flex justify-between items-center w-full px-6 h-16 sticky top-0 z-50 bg-zinc-950/80 backdrop-blur-md border-b-2 border-zinc-800">
+<div class="flex items-center gap-8">
+<h1 class="text-xl font-black text-white tracking-tighter uppercase font-headline">ZWIFT // TC</h1>
+<nav class="hidden md:flex gap-6">
+<a class="text-zinc-500 hover:bg-zinc-800 hover:text-white transition-colors font-headline font-black uppercase tracking-tighter" href="#">DASHBOARD</a>
+<a class="text-orange-500 font-bold font-headline font-black uppercase tracking-tighter" href="#">EDITOR</a>
+<a class="text-zinc-500 hover:bg-zinc-800 hover:text-white transition-colors font-headline font-black uppercase tracking-tighter" href="#">LIBRARY</a>
+</nav>
+</div>
+<div class="flex items-center gap-4">
+<button class="material-symbols-outlined text-zinc-500 hover:text-primary transition-colors">sync</button>
+<button class="material-symbols-outlined text-zinc-500 hover:text-primary transition-colors">notifications</button>
+<div class="w-8 h-8 bg-zinc-800 flex items-center justify-center border border-zinc-700">
+<span class="text-[10px] font-black uppercase">AA</span>
+</div>
+</div>
+</header>
+<!-- SideNavBar (Suppressed for Editor Focus) -->
+<aside class="fixed left-0 top-0 h-full flex flex-col pt-20 bg-zinc-950 border-r-2 border-zinc-800 w-16 md:w-20 z-40">
+<div class="flex flex-col items-center gap-8 pt-4">
+<div class="group cursor-pointer flex flex-col items-center text-orange-500">
+<span class="material-symbols-outlined text-2xl" style="font-variation-settings: 'FILL' 1;">precision_manufacturing</span>
+<span class="text-[8px] mt-1 font-black">EDITOR</span>
+</div>
+<div class="group cursor-pointer flex flex-col items-center text-zinc-500 hover:text-orange-400">
+<span class="material-symbols-outlined text-2xl">dashboard</span>
+<span class="text-[8px] mt-1 font-black">DATA</span>
+</div>
+<div class="group cursor-pointer flex flex-col items-center text-zinc-500 hover:text-orange-400">
+<span class="material-symbols-outlined text-2xl">folder_open</span>
+<span class="text-[8px] mt-1 font-black">FILES</span>
+</div>
+</div>
+<div class="mt-auto pb-8 flex flex-col items-center gap-6">
+<span class="material-symbols-outlined text-zinc-500 hover:text-primary cursor-pointer">settings</span>
+<span class="material-symbols-outlined text-zinc-500 hover:text-primary cursor-pointer">logout</span>
+</div>
+</aside>
+<!-- Main Content: Split Pane Editor -->
+<main class="pl-16 md:pl-20 h-[calc(100vh-64px)] flex">
+<!-- Left: Monospaced Editor -->
+<section class="w-1/2 flex flex-col border-r-2 border-zinc-800 bg-surface-container-lowest">
+<!-- Editor Header -->
+<div class="h-10 flex items-center justify-between px-4 bg-zinc-900 border-b-2 border-zinc-800">
+<div class="flex items-center gap-2">
+<span class="text-[10px] font-headline font-black tracking-widest text-zinc-500 uppercase">EDITOR_V2 // SESSION_004</span>
+</div>
+<div class="flex items-center gap-4">
+<span class="text-[9px] font-mono text-zinc-600">LN: 24 COL: 12</span>
+</div>
+</div>
+<!-- Code Canvas -->
+<div class="flex-grow flex font-mono text-sm leading-relaxed overflow-hidden">
+<div class="w-12 bg-zinc-950 flex flex-col items-end pr-3 py-4 text-zinc-700 select-none border-r border-zinc-900">
+<span>1</span><span>2</span><span>3</span><span>4</span><span>5</span><span>6</span><span>7</span><span>8</span><span>9</span><span>10</span><span>11</span><span>12</span><span>13</span><span>14</span><span>15</span><span>16</span><span>17</span><span>18</span><span>19</span><span>20</span>
+</div>
+<div class="flex-grow p-4 overflow-y-auto outline-none" contenteditable="true" spellcheck="false">
+<div class="syntax-comment">// SESIÓN DE UMBRAL ANAERÓBICO</div>
+<div><span class="syntax-keyword">NAME:</span> "THRESHOLD_PULSE_EXTREME"</div>
+<br/>
+<div><span class="syntax-keyword">WU</span> 15:00 <span class="syntax-number">55%</span>-75%</div>
+<div><span class="syntax-keyword">RAMP</span> 02:00 <span class="syntax-number">75%</span>-95%</div>
+<br/>
+<div><span class="syntax-keyword">REP</span> 4 {</div>
+<div class="pl-4"><span class="syntax-keyword">WORK</span> 08:00 <span class="syntax-number">105%</span></div>
+<div class="pl-4"><span class="syntax-keyword">REST</span> 03:00 <span class="syntax-number">50%</span></div>
+<div>}</div>
+<br/>
+<div><span class="syntax-keyword">CD</span> 10:00 <span class="syntax-number">45%</span></div>
+<br/>
+<div class="syntax-comment">// STATUS: OPTIMIZING_TSS</div>
+</div>
+</div>
+<!-- Contextual Help / Syntax Examples -->
+<div class="h-48 bg-zinc-950 border-t-2 border-zinc-800 p-4">
+<div class="flex items-center justify-between mb-3">
+<h3 class="text-[10px] font-headline font-black tracking-widest text-primary uppercase">AYUDA CONTEXTUAL</h3>
+<span class="text-[9px] text-zinc-600 font-mono">COMANDOS_SOPORTADOS.JSON</span>
+</div>
+<div class="grid grid-cols-3 gap-4">
+<div class="bg-surface-container p-3 border-l-2 border-zinc-700">
+<span class="block text-[10px] font-black text-zinc-400 mb-1">WU (CALENTAMIENTO)</span>
+<code class="text-[11px] font-mono text-zinc-500">WU 10:00 60%</code>
+</div>
+<div class="bg-surface-container p-3 border-l-2 border-zinc-700">
+<span class="block text-[10px] font-black text-zinc-400 mb-1">REP (REPETICIONES)</span>
+<code class="text-[11px] font-mono text-zinc-500">REP 5 { WORK/REST }</code>
+</div>
+<div class="bg-surface-container p-3 border-l-2 border-zinc-700">
+<span class="block text-[10px] font-black text-zinc-400 mb-1">CD (ENFRIAMIENTO)</span>
+<code class="text-[11px] font-mono text-zinc-500">CD 05:00 40%</code>
+</div>
+</div>
+</div>
+<!-- Validation Footer -->
+<div class="h-10 bg-zinc-950 border-t border-zinc-800 px-4 flex items-center justify-between">
+<div class="flex items-center gap-2">
+<span class="w-2 h-2 rounded-full bg-green-500 shadow-[0_0_8px_rgba(34,197,94,0.5)]"></span>
+<span class="text-[10px] font-headline font-black tracking-widest text-green-500">SINTAXIS_VÁLIDA</span>
+</div>
+<button class="bg-primary px-4 h-full text-on-primary font-headline font-black text-[10px] tracking-widest hover:brightness-110 active:scale-95 transition-all">
+                    PUBLICAR // WORKOUT
+                </button>
+</div>
+</section>
+<!-- Right: Real-time Preview -->
+<section class="w-1/2 flex flex-col bg-surface overflow-y-auto">
+<!-- Header Metadata -->
+<div class="p-6 border-b-2 border-zinc-900 bg-zinc-950/30">
+<div class="flex justify-between items-start mb-6">
+<div>
+<h2 class="text-4xl font-headline font-black tracking-tighter uppercase">PREVIEW_TIEMPO_REAL</h2>
+<p class="text-[10px] text-zinc-500 font-mono mt-1">SIMULADOR_KINETICO // ACTUALIZANDO...</p>
+</div>
+<div class="flex flex-col items-end">
+<span class="text-[10px] font-headline font-black text-zinc-400">ESTADO DE CARGA</span>
+<div class="w-32 h-1 bg-zinc-800 mt-1">
+<div class="w-[85%] h-full bg-primary shadow-[0_0_8px_rgba(255,145,93,0.5)]"></div>
+</div>
+</div>
+</div>
+<!-- KPI Dynamic Grid -->
+<div class="grid grid-cols-3 gap-1">
+<div class="bg-surface-container-high p-4 border-t-2 border-primary">
+<span class="text-[9px] font-headline font-black text-zinc-500 tracking-widest block mb-1">DURACIÓN TOTAL</span>
+<span class="text-2xl font-headline font-black text-white">01:14:20</span>
+</div>
+<div class="bg-surface-container-high p-4 border-t-2 border-zinc-700">
+<span class="text-[9px] font-headline font-black text-zinc-500 tracking-widest block mb-1">FACTOR INTENSIDAD</span>
+<span class="text-2xl font-headline font-black text-white">0.94 <span class="text-xs text-primary">IF</span></span>
+</div>
+<div class="bg-surface-container-high p-4 border-t-2 border-zinc-700">
+<span class="text-[9px] font-headline font-black text-zinc-500 tracking-widest block mb-1">TSS ESTIMADO</span>
+<span class="text-2xl font-headline font-black text-white">82.4</span>
+</div>
+</div>
+</div>
+<!-- Visualization Canvas -->
+<div class="flex-grow p-6 flex flex-col gap-6">
+<!-- Main Potency Chart (Stepped Bars) -->
+<div class="flex-grow bg-zinc-950/50 border border-zinc-900 p-8 flex items-end gap-1 relative min-h-[300px]">
+<!-- Chart Grid Lines -->
+<div class="absolute inset-0 flex flex-col justify-between py-8 px-4 opacity-10 pointer-events-none">
+<div class="border-b border-white w-full"></div>
+<div class="border-b border-white w-full"></div>
+<div class="border-b border-white w-full"></div>
+<div class="border-b border-white w-full"></div>
+</div>
+<!-- Chart Bars (Simulating Stepped Zones) -->
+<!-- Warm up -->
+<div class="flex-1 bg-zinc-600 h-[30%] border-t-2 border-zinc-400"></div>
+<div class="flex-1 bg-zinc-600 h-[35%] border-t-2 border-zinc-400"></div>
+<div class="flex-1 bg-zinc-600 h-[40%] border-t-2 border-zinc-400"></div>
+<!-- Ramp -->
+<div class="flex-1 bg-primary-dim h-[50%] border-t-2 border-primary"></div>
+<div class="flex-1 bg-primary-dim h-[65%] border-t-2 border-primary"></div>
+<!-- Interval 1 -->
+<div class="flex-1 bg-primary h-[85%] border-t-2 border-white"></div>
+<div class="flex-1 bg-zinc-800 h-[25%] border-t-2 border-zinc-600"></div>
+<!-- Interval 2 -->
+<div class="flex-1 bg-primary h-[85%] border-t-2 border-white"></div>
+<div class="flex-1 bg-zinc-800 h-[25%] border-t-2 border-zinc-600"></div>
+<!-- Interval 3 -->
+<div class="flex-1 bg-primary h-[85%] border-t-2 border-white"></div>
+<div class="flex-1 bg-zinc-800 h-[25%] border-t-2 border-zinc-600"></div>
+<!-- Interval 4 -->
+<div class="flex-1 bg-primary h-[85%] border-t-2 border-white"></div>
+<div class="flex-1 bg-zinc-800 h-[25%] border-t-2 border-zinc-600"></div>
+<!-- Cool Down -->
+<div class="flex-1 bg-zinc-700 h-[20%] border-t-2 border-zinc-500"></div>
+<div class="absolute bottom-2 left-8 text-[8px] font-mono text-zinc-600">00:00:00</div>
+<div class="absolute bottom-2 right-8 text-[8px] font-mono text-zinc-600">01:14:20</div>
+</div>
+<!-- Zone Breakdown -->
+<div class="h-32 grid grid-cols-6 gap-2">
+<div class="bg-surface-container-low flex flex-col justify-end p-2 border-b-4 border-zinc-500">
+<span class="text-[8px] font-black text-zinc-500">Z1</span>
+<div class="h-2 bg-zinc-500 w-[15%]"></div>
+</div>
+<div class="bg-surface-container-low flex flex-col justify-end p-2 border-b-4 border-blue-500">
+<span class="text-[8px] font-black text-zinc-500">Z2</span>
+<div class="h-2 bg-blue-500 w-[25%]"></div>
+</div>
+<div class="bg-surface-container-low flex flex-col justify-end p-2 border-b-4 border-green-500">
+<span class="text-[8px] font-black text-zinc-500">Z3</span>
+<div class="h-2 bg-green-500 w-[10%]"></div>
+</div>
+<div class="bg-surface-container-low flex flex-col justify-end p-2 border-b-4 border-yellow-500">
+<span class="text-[8px] font-black text-zinc-500">Z4</span>
+<div class="h-2 bg-yellow-500 w-[40%]"></div>
+</div>
+<div class="bg-surface-container-low flex flex-col justify-end p-2 border-b-4 border-primary">
+<span class="text-[8px] font-black text-zinc-500">Z5</span>
+<div class="h-2 bg-primary w-[10%]"></div>
+</div>
+<div class="bg-surface-container-low flex flex-col justify-end p-2 border-b-4 border-error">
+<span class="text-[8px] font-black text-zinc-500">Z6</span>
+<div class="h-2 bg-error w-0"></div>
+</div>
+</div>
+</div>
+<!-- Dynamic Action Bar -->
+<div class="p-6 bg-zinc-950 border-t-2 border-zinc-900 flex items-center justify-between">
+<div class="flex gap-4">
+<button class="flex items-center gap-2 px-4 py-2 bg-zinc-900 border border-zinc-800 text-[10px] font-headline font-black tracking-widest hover:bg-zinc-800 transition-colors">
+<span class="material-symbols-outlined text-sm">download</span> DESCARGAR .ZWO
+                    </button>
+<button class="flex items-center gap-2 px-4 py-2 bg-zinc-900 border border-zinc-800 text-[10px] font-headline font-black tracking-widest hover:bg-zinc-800 transition-colors">
+<span class="material-symbols-outlined text-sm">share</span> COMPARTIR
+                    </button>
+</div>
+<div class="flex items-center gap-3">
+<span class="text-[9px] font-mono text-zinc-600">ÚLTIMO GUARDADO: HACE 2 MIN</span>
+<div class="w-2 h-2 bg-orange-500 animate-pulse"></div>
+</div>
+</div>
+</section>
+</main>
+<!-- Overlay Context Menu (Mockup) -->
+<div class="fixed bottom-12 right-12 bg-zinc-900 border-2 border-primary p-4 shadow-[0_0_20px_rgba(255,145,93,0.3)] pointer-events-none opacity-0">
+<p class="text-[10px] font-headline font-black text-primary mb-2">MODO_EXPERTO: ACTIVO</p>
+<div class="w-48 h-1 bg-zinc-800">
+<div class="w-full h-full bg-primary"></div>
+</div>
+</div>
+</body></html>

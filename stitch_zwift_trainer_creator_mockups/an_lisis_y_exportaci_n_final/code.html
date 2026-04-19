@@ -1,0 +1,367 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="es"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700;800;900&amp;family=Inter:wght@100;200;300;400;500;600;700;800;900&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "surface-container-low": "#131313",
+                        "tertiary-dim": "#e7a006",
+                        "surface-container-lowest": "#000000",
+                        "primary-dim": "#ff742d",
+                        "primary-container": "#ff7936",
+                        "tertiary-fixed-dim": "#e7a006",
+                        "on-surface": "#ffffff",
+                        "error-dim": "#d7383b",
+                        "secondary-dim": "#ec8230",
+                        "surface-container-highest": "#262626",
+                        "secondary-fixed-dim": "#ffb380",
+                        "on-secondary": "#4a2100",
+                        "on-tertiary-fixed-variant": "#5a3b00",
+                        "primary": "#ff915d",
+                        "tertiary": "#ffbe50",
+                        "error": "#ff716c",
+                        "outline": "#777575",
+                        "on-background": "#ffffff",
+                        "on-secondary-fixed": "#562700",
+                        "primary-fixed-dim": "#f96400",
+                        "background": "#0e0e0e",
+                        "tertiary-container": "#f7ad1e",
+                        "surface-bright": "#2c2c2c",
+                        "on-tertiary-container": "#4e3300",
+                        "on-tertiary-fixed": "#321f00",
+                        "on-secondary-fixed-variant": "#813e00",
+                        "on-primary-container": "#411400",
+                        "surface-tint": "#ff915d",
+                        "on-secondary-container": "#fff6f2",
+                        "secondary": "#fc8f3c",
+                        "secondary-container": "#964900",
+                        "surface-container": "#1a1919",
+                        "surface-dim": "#0e0e0e",
+                        "on-primary": "#541d00",
+                        "on-error": "#490006",
+                        "surface": "#0e0e0e",
+                        "error-container": "#9f0519",
+                        "primary-fixed": "#ff7936",
+                        "on-error-container": "#ffa8a3",
+                        "outline-variant": "#494847",
+                        "inverse-surface": "#fcf8f8",
+                        "inverse-primary": "#a43f00",
+                        "surface-container-high": "#201f1f",
+                        "on-primary-fixed-variant": "#511b00",
+                        "on-tertiary": "#5a3c00",
+                        "on-primary-fixed": "#000000",
+                        "tertiary-fixed": "#f7ad1e",
+                        "inverse-on-surface": "#565554",
+                        "secondary-fixed": "#ffc6a2",
+                        "on-surface-variant": "#adaaaa",
+                        "surface-variant": "#262626"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0px",
+                        "lg": "0px",
+                        "xl": "0px",
+                        "full": "9999px"
+                    },
+                    "fontFamily": {
+                        "headline": ["Space Grotesk"],
+                        "body": ["Inter"],
+                        "label": ["Inter"]
+                    }
+                },
+            },
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .step-gradient {
+            background: linear-gradient(90deg, #ff915d 0%, #ff742d 100%);
+        }
+        ::-webkit-scrollbar { width: 4px; }
+        ::-webkit-scrollbar-track { background: #0e0e0e; }
+        ::-webkit-scrollbar-thumb { background: #262626; }
+    </style>
+</head>
+<body class="bg-background text-on-surface font-body selection:bg-primary selection:text-on-primary">
+<!-- TopAppBar Shell -->
+<header class="flex justify-between items-center w-full px-6 h-16 sticky top-0 z-50 bg-zinc-950/80 backdrop-blur-md border-b-2 border-zinc-800">
+<div class="text-xl font-black text-white tracking-tighter uppercase font-headline">
+            ZWIFT // <span class="text-orange-500">TC</span>
+</div>
+<div class="flex items-center gap-6">
+<div class="hidden md:flex gap-8">
+<span class="font-space-grotesk font-black uppercase tracking-tighter text-zinc-500 cursor-pointer hover:text-white transition-colors">DASHBOARD</span>
+<span class="font-space-grotesk font-black uppercase tracking-tighter text-zinc-500 cursor-pointer hover:text-white transition-colors">EDITOR</span>
+<span class="font-space-grotesk font-black uppercase tracking-tighter text-zinc-500 cursor-pointer hover:text-white transition-colors">LIBRARY</span>
+<span class="font-space-grotesk font-black uppercase tracking-tighter text-orange-500 font-bold cursor-pointer">ANALYTICS</span>
+</div>
+<div class="flex items-center gap-4 text-zinc-500">
+<span class="material-symbols-outlined cursor-pointer hover:text-white">sync</span>
+<span class="material-symbols-outlined cursor-pointer hover:text-white">notifications</span>
+<div class="w-8 h-8 bg-zinc-800 overflow-hidden">
+<img alt="Athlete Avatar" data-alt="High contrast portrait of a professional cyclist in gear with dramatic shadows and orange lighting accents" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCY38FUfBD4Q7kyS_1XmkI4pBEJPoM3sSkiefAQTttHFjJm_bNrs2RwvoPqw0nTI8sAYOO4_bNcioGV22Js7NoKGu_XJj3TeQNPGmt0HyXEBiwyhyzMsC6KEPYQ02TWFheGRm_AMt1KOhsZISP6pNnyBvjO0NbNbYOLhkP6LnZIqwAsSAPg49ETN9wIpSSNpNPQgcxre3uAgaReCVi6tLPcGDcjZPVdRXBVXcLrjbOe5pXBplUvtkOGsxkUBxCFpVFYkRTTsULUG80_"/>
+</div>
+</div>
+</div>
+</header>
+<!-- SideNavBar Shell -->
+<aside class="fixed left-0 top-0 h-full flex flex-col pt-20 bg-zinc-950 border-r-2 border-zinc-800 w-64 hidden md:flex z-40">
+<div class="px-6 mb-8">
+<div class="text-orange-500 font-black font-headline tracking-widest text-xs">ZWIFT // TRAINER</div>
+<div class="text-[9px] text-zinc-500 font-mono tracking-widest mt-1">V 2.0.4 // STATUS: OPTIMAL</div>
+</div>
+<nav class="flex-1">
+<div class="flex items-center gap-3 text-zinc-400 px-4 py-3 border-l-4 border-transparent hover:bg-zinc-900 hover:text-orange-400 transition-all cursor-pointer font-headline tracking-widest text-xs font-black">
+<span class="material-symbols-outlined">dashboard</span> DASHBOARD
+            </div>
+<div class="flex items-center gap-3 text-zinc-400 px-4 py-3 border-l-4 border-transparent hover:bg-zinc-900 hover:text-orange-400 transition-all cursor-pointer font-headline tracking-widest text-xs font-black">
+<span class="material-symbols-outlined">precision_manufacturing</span> EDITOR
+            </div>
+<div class="flex items-center gap-3 text-zinc-400 px-4 py-3 border-l-4 border-transparent hover:bg-zinc-900 hover:text-orange-400 transition-all cursor-pointer font-headline tracking-widest text-xs font-black">
+<span class="material-symbols-outlined">folder_open</span> LIBRARY
+            </div>
+<div class="flex items-center gap-3 bg-zinc-900 text-orange-500 border-l-4 border-orange-500 px-4 py-3 font-headline tracking-widest text-xs font-black">
+<span class="material-symbols-outlined">analytics</span> ANALYTICS
+            </div>
+</nav>
+<div class="p-6 border-t border-zinc-900">
+<button class="w-full bg-primary py-4 font-headline font-black text-xs tracking-widest flex items-center justify-center gap-2 hover:bg-primary-dim transition-colors text-on-primary">
+<span class="material-symbols-outlined text-sm">add</span> NEW WORKOUT
+            </button>
+</div>
+<div class="mt-auto pb-6">
+<div class="flex items-center gap-3 text-zinc-400 px-4 py-2 hover:bg-zinc-900 transition-all cursor-pointer font-headline tracking-widest text-xs font-black">
+<span class="material-symbols-outlined">settings</span> SETTINGS
+            </div>
+<div class="flex items-center gap-3 text-zinc-400 px-4 py-2 hover:bg-zinc-900 transition-all cursor-pointer font-headline tracking-widest text-xs font-black">
+<span class="material-symbols-outlined">logout</span> LOGOUT
+            </div>
+</div>
+</aside>
+<!-- Main Content Canvas -->
+<main class="md:ml-64 p-8 min-h-screen">
+<!-- Header Section -->
+<header class="mb-12">
+<div class="text-[10px] text-primary font-mono tracking-[0.3em] mb-2">TELEMETRY_DATA_UNIT_04</div>
+<h1 class="text-5xl md:text-6xl font-headline font-black uppercase tracking-tighter">ANÁLISIS_DE_SESIÓN: <span class="text-zinc-600">VOID_RUNNER_BETA</span></h1>
+</header>
+<!-- Bento Grid Layout -->
+<div class="grid grid-cols-12 gap-6">
+<!-- Central Power Chart -->
+<div class="col-span-12 lg:col-span-8 bg-surface-container-low border-l-4 border-primary p-6 relative overflow-hidden h-[450px]">
+<div class="absolute top-4 right-6 flex items-center gap-4 text-[10px] font-mono text-zinc-500">
+<span class="flex items-center gap-2"><div class="w-2 h-2 bg-primary"></div> POTENCIA (W)</span>
+<span class="flex items-center gap-2"><div class="w-2 h-2 bg-zinc-700"></div> CADENCIA (RPM)</span>
+</div>
+<div class="mb-6">
+<h2 class="font-headline font-black text-sm tracking-widest text-zinc-400 uppercase">PERFIL_DE_POTENCIA_SINC</h2>
+</div>
+<!-- Mock Chart Visualization -->
+<div class="w-full h-64 mt-12 flex items-end gap-1 px-4 border-b border-zinc-800 relative">
+<!-- Technical Tooltip -->
+<div class="absolute left-1/3 bottom-48 border-l border-t border-primary p-3 bg-zinc-950/90 z-10">
+<div class="text-[9px] font-mono text-primary mb-1 tracking-widest">PEAK_INTERVAL_02</div>
+<div class="text-xl font-headline font-black">422W</div>
+<div class="text-[8px] font-mono text-zinc-500">DUR: 00:04:30 // NP: 405W</div>
+</div>
+<!-- Step-based bar chart blocks -->
+<div class="bg-zinc-800 flex-1 h-[20%]"></div>
+<div class="bg-zinc-800 flex-1 h-[25%]"></div>
+<div class="bg-primary flex-1 h-[65%] shadow-[0_0_8px_rgba(255,145,93,0.3)]"></div>
+<div class="bg-primary flex-1 h-[60%]"></div>
+<div class="bg-zinc-800 flex-1 h-[30%]"></div>
+<div class="bg-zinc-800 flex-1 h-[35%]"></div>
+<div class="bg-primary flex-1 h-[85%] shadow-[0_0_8px_rgba(255,145,93,0.3)]"></div>
+<div class="bg-primary flex-1 h-[82%]"></div>
+<div class="bg-zinc-800 flex-1 h-[25%]"></div>
+<div class="bg-zinc-800 flex-1 h-[20%]"></div>
+<div class="bg-primary flex-1 h-[95%] shadow-[0_0_12px_rgba(255,145,93,0.5)]"></div>
+<div class="bg-primary flex-1 h-[90%]"></div>
+<div class="bg-zinc-800 flex-1 h-[40%]"></div>
+<div class="bg-zinc-800 flex-1 h-[38%]"></div>
+<div class="bg-error flex-1 h-[100%] shadow-[0_0_15px_rgba(255,113,108,0.5)]"></div>
+<div class="bg-zinc-800 flex-1 h-[20%]"></div>
+<div class="bg-zinc-800 flex-1 h-[22%]"></div>
+</div>
+<div class="flex justify-between mt-4 font-mono text-[9px] text-zinc-600">
+<span>00:00:00</span>
+<span>00:15:00</span>
+<span>00:30:00</span>
+<span>00:45:00</span>
+<span>01:00:00</span>
+</div>
+</div>
+<!-- Export Panel (Right) -->
+<div class="col-span-12 lg:col-span-4 flex flex-col gap-6">
+<div class="bg-zinc-950 border-2 border-primary p-8 flex flex-col h-full justify-between">
+<div>
+<div class="flex justify-between items-start mb-6">
+<h3 class="font-headline font-black text-xl tracking-tighter">EXPORTAR_PAQUETE</h3>
+<span class="material-symbols-outlined text-primary" style="font-variation-settings: 'FILL' 1;">file_download</span>
+</div>
+<p class="text-zinc-500 text-xs mb-8 leading-relaxed font-body">Compilación final del workout optimizada para motores de entrenamiento de alta frecuencia. Los metadatos de sincronización han sido validados.</p>
+<div class="space-y-4 mb-8">
+<div class="flex items-center justify-between p-4 bg-zinc-900 border-l-2 border-primary group cursor-pointer hover:bg-zinc-800 transition-colors">
+<div>
+<div class="text-xs font-black font-headline tracking-widest text-white">DESCARGAR .ZWO</div>
+<div class="text-[9px] font-mono text-zinc-500">FORMATO NATIVO ZWIFT</div>
+</div>
+<span class="material-symbols-outlined text-primary group-hover:translate-x-1 transition-transform">bolt</span>
+</div>
+<div class="flex items-center justify-between p-4 bg-zinc-900 border-l-2 border-zinc-700 opacity-60 hover:opacity-100 transition-all cursor-pointer">
+<div>
+<div class="text-xs font-black font-headline tracking-widest text-zinc-300">DESCARGAR .FIT</div>
+<div class="text-[9px] font-mono text-zinc-500">PERFIL FLEXIBLE COMPLETO</div>
+</div>
+<span class="material-symbols-outlined text-zinc-500">download</span>
+</div>
+<div class="flex items-center justify-between p-4 bg-zinc-900 border-l-2 border-zinc-700 opacity-60 hover:opacity-100 transition-all cursor-pointer">
+<div>
+<div class="text-xs font-black font-headline tracking-widest text-zinc-300">DESCARGAR .CSV</div>
+<div class="text-[9px] font-mono text-zinc-500">MATRIZ DE DATOS RAW</div>
+</div>
+<span class="material-symbols-outlined text-zinc-500">table_chart</span>
+</div>
+</div>
+</div>
+<div class="pt-6 border-t border-zinc-800">
+<div class="flex items-center gap-3 text-primary-dim mb-4">
+<span class="material-symbols-outlined text-sm">verified</span>
+<span class="text-[10px] font-mono tracking-widest font-bold">LISTO PARA EXPORTAR // CHECKSUM OK</span>
+</div>
+<button class="w-full bg-primary text-on-primary py-5 font-headline font-black text-sm tracking-[0.2em] step-gradient shadow-[0_0_20px_rgba(255,145,93,0.3)] hover:scale-[1.02] active:scale-[0.98] transition-all">
+                            INICIAR DESCARGA FINAL
+                        </button>
+</div>
+</div>
+</div>
+<!-- Distribution Zones Section -->
+<div class="col-span-12 bg-surface-container p-6 border-t-4 border-zinc-800">
+<div class="flex items-center justify-between mb-8">
+<h2 class="font-headline font-black text-sm tracking-[0.3em] text-zinc-500 uppercase">DISTRIBUCIÓN_ZONAS // FISIOLOGÍA</h2>
+<div class="text-[10px] font-mono text-zinc-600">ID: BK-2024-X9 // SENSOR: TACX_NEO_3</div>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-7 gap-4">
+<!-- Zone 1 -->
+<div class="space-y-2">
+<div class="flex justify-between text-[10px] font-mono">
+<span class="text-zinc-500">Z1_RECOVERY</span>
+<span class="text-white">12%</span>
+</div>
+<div class="h-2 bg-zinc-800 relative">
+<div class="absolute left-0 top-0 h-full bg-zinc-600 w-[12%]"></div>
+</div>
+</div>
+<!-- Zone 2 -->
+<div class="space-y-2">
+<div class="flex justify-between text-[10px] font-mono">
+<span class="text-zinc-500">Z2_ENDURANCE</span>
+<span class="text-white">25%</span>
+</div>
+<div class="h-2 bg-zinc-800 relative">
+<div class="absolute left-0 top-0 h-full bg-blue-500 w-[25%]"></div>
+</div>
+</div>
+<!-- Zone 3 -->
+<div class="space-y-2">
+<div class="flex justify-between text-[10px] font-mono">
+<span class="text-zinc-500">Z3_TEMPO</span>
+<span class="text-white">18%</span>
+</div>
+<div class="h-2 bg-zinc-800 relative">
+<div class="absolute left-0 top-0 h-full bg-green-500 w-[18%]"></div>
+</div>
+</div>
+<!-- Zone 4 -->
+<div class="space-y-2">
+<div class="flex justify-between text-[10px] font-mono">
+<span class="text-zinc-500">Z4_THRESHOLD</span>
+<span class="text-white">30%</span>
+</div>
+<div class="h-2 bg-zinc-800 relative">
+<div class="absolute left-0 top-0 h-full bg-yellow-500 w-[30%] shadow-[0_0_8px_rgba(234,179,8,0.3)]"></div>
+</div>
+</div>
+<!-- Zone 5 -->
+<div class="space-y-2">
+<div class="flex justify-between text-[10px] font-mono">
+<span class="text-zinc-500">Z5_VO2_MAX</span>
+<span class="text-white">10%</span>
+</div>
+<div class="h-2 bg-zinc-800 relative">
+<div class="absolute left-0 top-0 h-full bg-orange-500 w-[10%] shadow-[0_0_8px_rgba(255,145,93,0.3)]"></div>
+</div>
+</div>
+<!-- Zone 6 -->
+<div class="space-y-2">
+<div class="flex justify-between text-[10px] font-mono">
+<span class="text-zinc-500">Z6_ANAEROBIC</span>
+<span class="text-white">4%</span>
+</div>
+<div class="h-2 bg-zinc-800 relative">
+<div class="absolute left-0 top-0 h-full bg-error w-[4%] shadow-[0_0_8px_rgba(255,113,108,0.3)]"></div>
+</div>
+</div>
+<!-- Zone 7 -->
+<div class="space-y-2">
+<div class="flex justify-between text-[10px] font-mono">
+<span class="text-zinc-500">Z7_NEUROMUSC</span>
+<span class="text-white">1%</span>
+</div>
+<div class="h-2 bg-zinc-800 relative">
+<div class="absolute left-0 top-0 h-full bg-zinc-100 w-[1%] shadow-[0_0_8px_rgba(255,255,255,0.3)]"></div>
+</div>
+</div>
+</div>
+</div>
+<!-- Footer Stats Matrix -->
+<div class="col-span-12 grid grid-cols-2 md:grid-cols-4 gap-6">
+<div class="bg-surface-container-low p-6 border-l-2 border-zinc-700">
+<div class="text-[9px] font-mono text-zinc-500 tracking-widest mb-1">NORMALIZED_POWER</div>
+<div class="text-2xl font-headline font-black">288<span class="text-xs text-zinc-500 ml-1">W</span></div>
+</div>
+<div class="bg-surface-container-low p-6 border-l-2 border-zinc-700">
+<div class="text-[9px] font-mono text-zinc-500 tracking-widest mb-1">INTENSITY_FACTOR</div>
+<div class="text-2xl font-headline font-black">0.86</div>
+</div>
+<div class="bg-surface-container-low p-6 border-l-2 border-zinc-700">
+<div class="text-[9px] font-mono text-zinc-500 tracking-widest mb-1">TRAINING_STRESS</div>
+<div class="text-2xl font-headline font-black">74.2<span class="text-xs text-zinc-500 ml-1">TSS</span></div>
+</div>
+<div class="bg-surface-container-low p-6 border-l-2 border-zinc-700">
+<div class="text-[9px] font-mono text-zinc-500 tracking-widest mb-1">ENERGY_EXPENDED</div>
+<div class="text-2xl font-headline font-black">1,104<span class="text-xs text-zinc-500 ml-1">KJ</span></div>
+</div>
+</div>
+</div>
+</main>
+<!-- BottomNavBar for Mobile Shell -->
+<nav class="md:hidden fixed bottom-0 left-0 w-full bg-zinc-950 border-t-2 border-zinc-800 flex justify-around py-3 px-6 z-50">
+<div class="flex flex-col items-center gap-1 text-zinc-500">
+<span class="material-symbols-outlined">dashboard</span>
+<span class="text-[9px] font-headline font-black uppercase">DASHBOARD</span>
+</div>
+<div class="flex flex-col items-center gap-1 text-zinc-500">
+<span class="material-symbols-outlined">precision_manufacturing</span>
+<span class="text-[9px] font-headline font-black uppercase">EDITOR</span>
+</div>
+<div class="flex flex-col items-center gap-1 text-orange-500">
+<span class="material-symbols-outlined">analytics</span>
+<span class="text-[9px] font-headline font-black uppercase">ANALYTICS</span>
+</div>
+<div class="flex flex-col items-center gap-1 text-zinc-500">
+<span class="material-symbols-outlined">folder_open</span>
+<span class="text-[9px] font-headline font-black uppercase">LIBRARY</span>
+</div>
+</nav>
+</body></html>
