@@ -8,7 +8,7 @@ export function buildZwiftWorkoutXml(parsed: ParsedWorkoutDsl, preview: WorkoutP
 
   return `<?xml version="1.0" encoding="UTF-8"?>
 <workout_file>
-  <author>Zwift Trainer Creator</author>
+  <author>Zwift Workout Composer</author>
   <name>${title}</name>
   <description>Generated workout</description>
   <sportType>bike</sportType>

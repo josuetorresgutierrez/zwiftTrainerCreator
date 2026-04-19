@@ -80,7 +80,7 @@ function App() {
       </a>
       <aside className="sidebar">
         <div>
-          <p className="brand">ZWIFT TRAINER CREATOR</p>
+          <p className="brand">ZWIFT WORKOUT COMPOSER</p>
           <p className="brand-subtitle">SPRINT_0_READY</p>
         </div>
 
@@ -99,7 +99,7 @@ function App() {
         <header className="topbar">
           <div>
             <p className="eyebrow">SPRINT_0 / BASE FOUNDATION</p>
-            <h1>Zwift Trainer Creator</h1>
+            <h1>Zwift Workout Composer</h1>
           </div>
           <div className="status-pill" aria-live="polite">
             UI en español · Stack definido

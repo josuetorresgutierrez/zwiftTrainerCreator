@@ -1,6 +1,6 @@
 # Prompt para Stitch
 
-Diseñá la interfaz final de una app web llamada **Zwift Trainer Creator**.
+Diseñá la interfaz final de una app web llamada **Zwift Workout Composer**.
 
 ## Contexto
 - La app transforma entrenamientos escritos en texto o DSL en workouts estructurados compatibles con Zwift.

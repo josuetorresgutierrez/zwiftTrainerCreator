@@ -1,7 +1,7 @@
 # Plan Técnico por Sprints
 
 ## Objetivo
-Construir **Zwift Trainer Creator** de forma incremental, priorizando primero el núcleo funcional: editor, parser, validación, preview y exportación.
+Construir **Zwift Workout Composer** de forma incremental, priorizando primero el núcleo funcional: editor, parser, validación, preview y exportación.
 
 ## Regla de ejecución
 - No avanzar al siguiente sprint si el anterior no está funcional.
